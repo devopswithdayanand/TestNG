@@ -1,0 +1,186 @@
+What is TestNG?
+
+    TestNG = Testing Next Generation
+
+It is inspired by JUnit but provides more powerful features, flexibility, and better control over test execution.
+
+
+
+Why TestNG is used?
+
+    TestNG helps you:
+
+    - Write structured and maintainable test cases
+
+    - Control test execution order
+
+    - Group and run tests easily
+
+    - Generate detailed HTML reports
+
+    - Run tests in parallel (faster execution)
+
+
+
+Key Features of TestNG
+1. Annotations
+
+TestNG uses annotations to control test flow.
+
+    Common annotations:
+
+    @BeforeSuite – Runs once before the entire test suite starts.
+
+    @AfterSuite – Runs once after the entire test suite finishes.
+
+    @BeforeTest – Runs once before each <test> block in testng.xml.
+
+    @AfterTest – Runs once after each <test> block in testng.xml.
+
+    @BeforeClass – Runs once before the first test method in a class.
+
+    @AfterClass – Runs once after all test methods in a class finish.
+
+    @BeforeMethod – Runs before every @Test method.
+
+    @AfterMethod – Runs after every @Test method.
+
+    @Test – Marks a method as a test case.
+
+    @DataProvider – Supplies multiple sets of data to a test method.
+
+    @Parameters – Passes parameters from testng.xml to test methods.
+
+    @Factory – Dynamically creates test class instances.
+
+    @Listeners – Attaches listeners to customize test execution behavior.
+
+    @BeforeGroups – Runs before the first test method of a specific group.
+
+    @AfterGroups – Runs after all test methods of a specific group finish.
+
+
+    Example:
+
+        @Test
+        public void loginTest() {
+            System.out.println("Login Test");
+        }
+
+
+
+2. TestNG XML (testng.xml)
+
+Test execution is controlled using an XML file.
+
+    Example:
+
+    <suite name="Test Suite">
+        <test name="Login Tests">
+            <classes>
+                <class name="com.tests.LoginTest"/>
+            </classes>
+        </test>
+    </suite>
+
+
+
+
+3. Test Priorities
+
+    Control execution order.
+
+    @Test(priority = 1)
+    public void openBrowser() {}
+
+    @Test(priority = 2)
+    public void login() {}
+
+
+
+4. Grouping Tests
+
+    Run specific groups like smoke, regression, etc.
+
+    @Test(groups = "smoke")
+    public void smokeTest() {}
+
+
+    In XML:
+
+    <groups>
+        <run>
+            <include name="smoke"/>
+        </run>
+    </groups>
+
+
+
+
+5. Assertions
+
+    Used to validate expected vs actual results.
+
+    Assert.assertEquals(actualTitle, "Home Page");
+
+
+
+
+6. Parallel Execution
+
+    Run tests in parallel to save time.
+
+    <suite name="Suite" parallel="tests" thread-count="3">
+
+
+
+
+7. DataProvider (Data-Driven Testing)
+
+    Run the same test with multiple inputs.
+
+    @DataProvider(name = "loginData")
+    public Object[][] data() {
+        return new Object[][] {
+            {"user1", "pass1"},
+            {"user2", "pass2"}
+        };
+    }
+
+    @Test(dataProvider = "loginData")
+    public void loginTest(String user, String pass) {}
+
+
+
+8. Reports
+
+TestNG automatically generates:
+
+    Emailable HTML report
+
+    Test execution summary
+
+
+
+TestNG vs JUnit (Quick Comparison)
+Feature	             TestNG	                JUnit
+Annotations	         More powerful	        Limited
+Grouping	         Yes	                No
+Parallel execution	 Yes	                Limited
+Data-driven testing	 Yes	                Limited
+Reporting	         Built-in	            Basic
+
+
+
+Where TestNG is Used?
+
+    Selenium automation testing
+
+    API testing (RestAssured + TestNG)
+
+    CI/CD pipelines (Jenkins)
+
+    Regression & smoke testing
+
+
+
